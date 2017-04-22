@@ -19,21 +19,15 @@ defmodule IsStringUnique do
   def has_duplicate?(str) do
     str
     |> String.codepoints
+    |> Enum.sort
     |> found_duplicate?
   end
 
   def found_duplicate?([]), do: false
-  def found_duplicate?([char | tail]) do
-    case find_duplicate(char, tail) do
-      false -> found_duplicate?(tail)
-      _ -> true
-    end
+  def found_duplicate?([a | [ a | _]]), do: true
+  def found_duplicate?([_ | tail]) do
+    found_duplicate?(tail)
   end
-
-  def find_duplicate(_, []), do: false
-  def find_duplicate(char, [head | _   ]) when char == head, do: true
-  def find_duplicate(char, [_    | tail]), do: find_duplicate(char, tail)
-
 end
 
 IsStringUnique.start("")
