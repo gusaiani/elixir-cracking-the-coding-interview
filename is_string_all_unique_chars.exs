@@ -39,4 +39,4 @@ end
 IsStringUnique.start("")
 IsStringUnique.start("abc")
 IsStringUnique.start("abca")
-IsStringUnique.start("abcaqwfp;yuasrtoiewqf;pyuqlwf;yupasroitenaqwf;pyursaqfwpsrta")
+IsStringUnique.start("qwfpgjluy;arstdhneizxcvbkm,./q")
