@@ -10,15 +10,16 @@ defmodule IsStringUnique do
 
   def start(""), do: IO.puts("String is empty.")
   def start(str) do
-    has_duplicate? =
-      str
-      |> String.codepoints
-      |> found_duplicate?
-
-    case has_duplicate? do
+    case has_duplicate?(str) do
       false -> IO.inspect("String #{str} has all unique characters.")
       _     -> IO.inspect("String #{str} has duplicated characters")
     end
+  end
+
+  def has_duplicate?(str) do
+    str
+    |> String.codepoints
+    |> found_duplicate?
   end
 
   def found_duplicate?([]), do: false
