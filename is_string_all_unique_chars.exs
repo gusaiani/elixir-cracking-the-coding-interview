@@ -8,8 +8,8 @@ defmodule IsStringUnique do
   What if you cannot use additional data structures?
   """
 
-  def start(str) when is_binary(str) and str == "", do: IO.puts("String is empty.")
-  def start(str) when is_binary str do
+  def start(""), do: IO.puts("String is empty.")
+  def start(str) do
     has_duplicate? =
       str
       |> String.codepoints
