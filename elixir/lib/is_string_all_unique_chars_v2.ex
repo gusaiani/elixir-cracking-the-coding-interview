@@ -28,9 +28,7 @@ defmodule IsStringAllUniqueCharsV2 do
 
   """
   def start(""), do: true
-  def start(str) do
-    !has_duplicate?(str)
-  end
+  def start(str), do: !has_duplicate?(str)
 
   def has_duplicate?(str) do
     str
