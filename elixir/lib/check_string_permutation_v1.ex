@@ -23,9 +23,7 @@ defmodule CheckStringPermutationV1 do
       iex> CheckStringPermutationV1.start("abc", "cab")
       true
 
-      iex> CheckStringPermutationV1.start(
-        "qw;fypqwosiretnaorsitenq;wfyuplqwofiaesrtnaosrietnqw;fyupl",
-        "lpuyf;wqnteirsoantrseaifowqlpuyfw;qnetisroanterisowqpyf;wq")
+      iex> CheckStringPermutationV1.start("qw;fypqwosiretnaorsitenq;wfyuplqwofiaesrtnaosrietnqw;fyupl","lpuyf;wqnteirsoantrseaifowqlpuyfw;qnetisroanterisowqpyf;wq")
       true
 
   """

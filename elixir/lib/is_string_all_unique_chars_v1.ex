@@ -1,4 +1,4 @@
-defmodule IsStringUnique do
+defmodule IsStringAllUniqueCharsV1 do
   @moduledoc """
   Chapter 1
   Page 90
@@ -8,11 +8,30 @@ defmodule IsStringUnique do
   What if you cannot use additional data structures?
   """
 
-  def start(""), do: IO.puts("String is empty.")
+  @doc """
+  Check string for uniqueness of all characters.
+
+      iex> IsStringAllUniqueCharsV1.start("")
+      true
+
+      iex> IsStringAllUniqueCharsV1.start("abc")
+      true
+
+      iex> IsStringAllUniqueCharsV1.start("abca")
+      false
+
+      iex> IsStringAllUniqueCharsV1.start("qwfpgjluy;arstdhneiozxcvbkm,.")
+      true
+
+      iex> IsStringAllUniqueCharsV1.start("qwfpgjluy;arstdhneizxcvbkm,./q")
+      false
+
+  """
+  def start(""), do: true
   def start(str) do
     case has_duplicate?(str) do
-      false -> IO.inspect("String #{str} has all unique characters.")
-      _     -> IO.inspect("String #{str} has duplicated characters")
+      false -> true
+      _     -> false
     end
   end
 
@@ -36,8 +55,3 @@ defmodule IsStringUnique do
 
 end
 
-IsStringUnique.start("")
-IsStringUnique.start("abc")
-IsStringUnique.start("abca")
-IsStringUnique.start("qwfpgjluy;arstdhneiozxcvbkm,.")
-IsStringUnique.start("qwfpgjluy;arstdhneizxcvbkm,./q")
