@@ -1,4 +1,8 @@
 defmodule CheckStringPermutation do
+  use ExUnit.Case, async: true
+  ExUnit.start()
+  doctest CheckStringPermutation
+
   @moduledoc """
   Chapter 1
   Page 90
@@ -8,13 +12,10 @@ defmodule CheckStringPermutation do
   """
 
   def start(str1, str2) do
-    IO.inspect(sort(str1) === sort(str2))
-  end
-
-  def sort(str) do
-    str
-    |> String.codepoints
-    |> Enum.sort
+    case String.length(str1) == String.length(str2) do
+      true  -> true
+      false -> IO.inspect("#{str1} is not a permutation of #{str2}")
+    end
   end
 end
 
