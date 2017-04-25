@@ -30,8 +30,24 @@ defmodule CheckStringPermutationV2 do
   """
   def start(str1, str2) do
     case String.length(str1) == String.length(str2) do
-      true  -> true
       false -> false
+      true  -> compare_strings(str1, str2)
     end
+  end
+
+  def compare_strings(str1, str2) do
+    build_linked_list(str1) == build_linked_list(str2)
+  end
+
+  def build_linked_list(str) do
+    str
+      |> String.graphemes
+      |> convert_to_map
+  end
+
+  def convert_to_map(array) do
+    Enum.reduce(array, %{}, fn(char, map) ->
+      Map.update(map, char, 1, &(&1 + 1))
+    end)
   end
 end
