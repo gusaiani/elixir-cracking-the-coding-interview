@@ -29,10 +29,7 @@ defmodule IsStringAllUniqueCharsV2 do
   """
   def start(""), do: true
   def start(str) do
-    case has_duplicate?(str) do
-      false -> true
-      _     -> false
-    end
+    !has_duplicate?(str)
   end
 
   def has_duplicate?(str) do
