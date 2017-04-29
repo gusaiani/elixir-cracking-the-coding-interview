@@ -13,6 +13,9 @@ defmodule OneAway do
 
   ## Examples
 
+      iex> OneAway.is?("arst", "qwfp")
+      false
+
       iex> OneAway.is?("pale", "ple")
       true
 
@@ -62,6 +65,9 @@ defmodule OneAway do
     is?(tail1, tail2, acc + 1)
   end
   def is?([_ | [a | tail1]], [_ | [a | tail2]], acc) do
+    is?(tail1, tail2, acc + 1)
+  end
+  def is?([_ | tail1], [_ | tail2], acc) do
     is?(tail1, tail2, acc + 1)
   end
 end
