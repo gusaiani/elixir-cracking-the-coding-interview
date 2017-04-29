@@ -39,7 +39,6 @@ defmodule OneAway do
     list2 = String.graphemes(string2)
 
     is?(list1, list2, 0)
-
   end
 
   def is?(_, _, 2), do: false
