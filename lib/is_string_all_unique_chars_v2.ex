@@ -38,9 +38,8 @@ defmodule IsStringAllUniqueCharsV2 do
   end
 
   def found_duplicate?([]), do: false
-  def found_duplicate?([a | [ a | _]]), do: true
+  def found_duplicate?([a | [a | _]]), do: true
   def found_duplicate?([_ | tail]) do
     found_duplicate?(tail)
   end
 end
-

@@ -32,12 +32,15 @@ defmodule PalindromePermutation do
   def convert_to_map(list) do
     Enum.reduce(list, %{}, fn(char, map) ->
       char = String.downcase(char)
-
-      case (char != String.upcase(char)) do
-        true -> Map.update(map, char, 1, fn _ -> 0 end)
-        _    -> map
-      end
+      update_map(map, char, is_alphabetical?(char))
     end)
+  end
+
+  def is_alphabetical?(char), do: char != String.upcase(char)
+
+  def update_map(map, _, false), do: map
+  def update_map(map, char, _) do
+    Map.update(map, char, 1, fn _ -> 0 end)
   end
 
   def sum_over_1?(list, acc \\ 0)

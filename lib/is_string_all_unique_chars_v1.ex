@@ -50,8 +50,7 @@ defmodule IsStringAllUniqueCharsV1 do
   end
 
   def find_duplicate(_, []), do: false
-  def find_duplicate(char, [char | _   ]), do: true
-  def find_duplicate(char, [_    | tail]), do: find_duplicate(char, tail)
+  def find_duplicate(char, [char | _]), do: true
+  def find_duplicate(char, [_ | tail]), do: find_duplicate(char, tail)
 
 end
-
