@@ -55,6 +55,10 @@ defmodule StringCompression do
   end
 
   defp shortest(string1, string2) do
-    if (String.length(string1) < String.length(string2)), do: string1, else: string2
+    if String.length(string1) < String.length(string2) do
+      string1
+    else
+      string2
+    end
   end
 end
