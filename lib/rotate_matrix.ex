@@ -14,8 +14,29 @@ defmodule RotateMatrix do
 
   ## Examples
 
-      iex> RotateMatrix.start([0,0])
-      [1,0]
+      iex> RotateMatrix.start(['a'])
+      ['a']
+
+      iex> four_tile_square = [
+      ...>  'a', 'b', 'c', 'd',
+      ...>  'e', 'f', 'g', 'h',
+      ...>  'i', 'j', 'k', 'l',
+      ...>  'm', 'n', 'o', 'p'
+      ...> ]
+      ...> rotated_four_tile_square = [
+      ...>  'm', 'i', 'e', 'a',
+      ...>  'n', 'j', 'f', 'b',
+      ...>  'o', 'k', 'g', 'c',
+      ...>  'p', 'l', 'h', 'd'
+      ...> ]
+      ...> RotateMatrix.start(four_tile_square) == rotated_four_tile_square
+      true
+
   """
-  def start(_), do: [3,9]
+  def start(list) when is_list(list) do
+    row_length = integer_sqrt(list)
+  end
+
+  def integer_sqrt(list), do: list |> length |> :math.sqrt |> trunc
+
 end
