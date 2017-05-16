@@ -9,16 +9,45 @@ defmodule ZeroMatrix do
 
   @doc """
   Detect zero in matrix and set its column and row entries all as zero.
-
-  ## Examples
-
-      iex> ZeroMatrix.start(['a'])
-      ['a']
-
-      iex> ZeroMatrix.start(%{:row_length => 4, :column_height => 4, :items => ['a', 'b', 'c', 'd', 'e',  0,  'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']})
-      ['a', 0, 'c', 'd', 0, 0, 0, 0, 'i', 0, 'k', 'l', 'm', 0, 'o', 'p']
   """
   def start(matrix) do
-    ['0']
+    {x, y} = find_zeros(matrix)
+    IO.inspect x
+    IO.inspect y
+    "3"
+  end
+
+  defp find_zeros(matrix, coordinates_with_zeros \\ {[], []}, index \\ 0)
+
+  defp find_zeros(%{row_length: _, column_height: _, items: []}, coordinates_with_zeros, _),
+    do: coordinates_with_zeros
+
+  defp find_zeros(%{row_length: row_length, column_height: column_height, items: [0 | t]}, {x, y}, index) do
+
+    {new_x, new_y} = get_coordinates(row_length, index)
+
+    every_x = add_if_new(x, new_x)
+    every_y = add_if_new(y, new_y)
+
+    coordinates_with_zeros = {every_x, every_y}
+
+    find_zeros(%{row_length: row_length, column_height: column_height, items: t}, coordinates_with_zeros, index + 1)
+  end
+
+  defp find_zeros(%{row_length: row_length, column_height: column_height, items: [_| t]}, coordinates_with_zeros, index) do
+    find_zeros(%{row_length: row_length, column_height: column_height, items: t}, coordinates_with_zeros, index + 1)
+  end
+
+  defp get_coordinates(row_length, index) do
+    x = rem(index, row_length)
+    y = div(index, row_length)
+    {x,y}
+  end
+
+  defp add_if_new(list, item) do
+      case Enum.member?(list, item) do
+        true -> list
+        false -> [item | list]
+      end
   end
 end
