@@ -14,11 +14,11 @@ defmodule StringRotation do
   Check if strings are rotations of one another
 
   ## Examples
-    iex> StringRotation.is?("waterbottle", "erbottlewat")
-    true
-
     iex> StringRotation.is?("coke", "pepsi")
     false
+
+    iex> StringRotation.is?("waterbottle", "erbottlewat")
+    true
 
     iex> StringRotation.is?("coke", "epsi")
     false
@@ -31,8 +31,8 @@ defmodule StringRotation do
 
     iex> StringRotation.is?("watwater", "erwatwat")
     true
-
   """
+
   def is?(string1, string2) do
     case String.length(string1) == String.length(string2) do
       false -> false
@@ -41,7 +41,29 @@ defmodule StringRotation do
   end
 
   defp compare(string1, string2) do
-    IO.puts "Comparing #{string1} and #{string2}"
-    true
+    chars1 = String.graphemes(string1)
+    chars2 = String.graphemes(string2)
+    length = length(chars1)
+
+    compare_chars(chars1, chars2, length)
+  end
+
+  defp compare_chars(chars1, chars2, length, rotations_performed \\ 1)
+
+  defp compare_chars(array, array, _, _), do: true
+
+  defp compare_chars(_, _, length, length), do: false
+
+  defp compare_chars(array1, [a | tail2], length, rotations_performed) do
+    # IO.puts ''
+    # IO.inspect array1, label: "array1"
+    # IO.inspect a, label: "a"
+    # IO.inspect tail2, label: "tail2"
+    # IO.inspect length, label: "length"
+    # IO.inspect rotations_performed, label: "rotations_performed"
+
+    rotated_array_2 = tail2 ++ [a]
+
+    compare_chars(array1, rotated_array_2, length, rotations_performed + 1)
   end
 end
