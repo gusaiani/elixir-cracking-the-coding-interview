@@ -1,4 +1,4 @@
-defmodule StringRotation do
+defmodule StringRotationV1 do
   @moduledoc """
   Chapter 1
   Page 91
@@ -14,22 +14,22 @@ defmodule StringRotation do
   Check if strings are rotations of one another
 
   ## Examples
-    iex> StringRotation.is?("coke", "pepsi")
+    iex> StringRotationV1.is?("coke", "pepsi")
     false
 
-    iex> StringRotation.is?("waterbottle", "erbottlewat")
+    iex> StringRotationV1.is?("waterbottle", "erbottlewat")
     true
 
-    iex> StringRotation.is?("coke", "epsi")
+    iex> StringRotationV1.is?("coke", "epsi")
     false
 
-    iex> StringRotation.is?("coke", "ecok")
+    iex> StringRotationV1.is?("coke", "ecok")
     true
 
-    iex> StringRotation.is?("waterbottle", "erbotlewat")
+    iex> StringRotationV1.is?("waterbottle", "erbotlewat")
     false
 
-    iex> StringRotation.is?("watwater", "erwatwat")
+    iex> StringRotationV1.is?("watwater", "erwatwat")
     true
   """
 
