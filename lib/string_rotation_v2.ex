@@ -40,8 +40,8 @@ defmodule StringRotationV2 do
       String.length(string1) == 0 ->
         false
       true ->
-        longString1 = string1 <> string1
-        longString1 =~ string2
+        long_string1 = string1 <> string1
+        long_string1 =~ string2
     end
   end
 end
